@@ -1,0 +1,89 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, dsfont}
+\usepackage{amscd}
+\usepackage[russian]{babel}
+%\usepackage{pscyr}
+\usepackage{cmap}
+
+\textwidth=16.5cm
+\hoffset=-2.5cm
+\textheight=25.5cm
+\voffset=-2.5cm
+
+
+\righthyphenmin=2
+\parindent=0mm
+\parskip=3mm
+
+\newcommand{\suml}{\sum\limits}
+\newcommand{\intl}{\int\limits}
+
+
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\DeclareMathOperator*{\essinf}{ess\,inf}
+
+%========Библиография=========
+\makeatletter
+\renewcommand{\@biblabel}[1]{#1.}
+\makeatother
+
+\bibliographystyle{utf8gost705u}
+%================
+
+
+\newtheorem{lemma}{Лемма}
+\newtheorem{theorem}{Теорема}
+\newtheorem*{remark}{Замечание}
+%\renewcommand{\theremark}{}
+\newtheorem{theoremrus}{Теорема}
+\newtheorem{lemmarus}{Лемма}
+\newtheorem{statementrus}{Утверждение}
+\newtheorem{remarkrus}{Замечание}
+
+\newcommand{\highphantom}{\vphantom{\dfrac{1}{1}}}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
+
+%\renewcommand{\thelemma}{\arabic{lemma}}
+%\renewcommand{\proofname}{Доказательство}
+\renewcommand{\arraystretch}{2}
+
+\begin{document}
+\begin{equation}\label{fib}
+  Fib(n)=\frac{\varphi^n - \psi^n}{\sqrt{5}}, \quad
+  \varphi = \frac{1+\sqrt{5}}{2},
+  \psi = \frac{1-\sqrt{5}}{2}.
+\end{equation}
+For $n=1, 2$ \eqref{fib} holds. Assume it holds for any $n \le k$. Let's consider the case $n=k+1$. We have to prove that
+\begin{equation*}
+  Fib(k+1)=\frac{\varphi^{k+1} - \psi^{k+1}}{\sqrt{5}}.
+\end{equation*}
+Using the recurrence formula and  induction hypothesis we can represent $Fib(k+1)$ as follows:
+\begin{multline*}
+  Fib(k+1) = Fib(k) + Fib(k-1)=
+  \frac{\varphi^{k} - \psi^{k}}{\sqrt{5}} +
+  \frac{\varphi^{k-1} - \psi^{k-1}}{\sqrt{5}} = \\
+  \frac{1}{2^{k+1}\sqrt{5}}
+  \Bigl(
+  2(1+\sqrt{5})^k - 2(1-\sqrt{5})^{k} 
+  +4(1+\sqrt{5})^{k-1} - 4(1-\sqrt{5})^{k-1} 
+  \Bigr)=\\
+  \frac{1}{2^{k+1}\sqrt{5}}
+  \Bigl(
+  (1+\sqrt{5})^{k-1}(2+2\sqrt{5}+4) - (1-\sqrt{5})^{k}((2-2\sqrt{5}+4))
+  \Bigr)=\\
+  \frac{1}{2^{k+1}\sqrt{5}}
+  \Bigl(
+  (1+\sqrt{5})^{k-1}(1+\sqrt{5})^2 - (1-\sqrt{5})^{k}(1-\sqrt{5})^2
+  \Bigr)=\frac{\varphi^{k+1} - \psi^{k+1}}{\sqrt{5}},
+\end{multline*}
+thereby showing that our statement holds for $n=k+1$, and formula \eqref{fib} is proved.
+
+It is easy to show that $\Bigl|\frac{\psi^n}{\sqrt{5}}\Bigr|<\frac{1}{2}$. Indeed,
+\begin{equation*}
+  |\psi| = \frac{\sqrt{5}-1}{2} = \frac{\sqrt{5}}{2} - \frac{1}{2} <
+  \frac{\sqrt{9}}{2} - \frac{1}{2} = 1,
+\end{equation*}
+so $\Bigl|\frac{\psi^n}{\sqrt{5}}\Bigr| < \frac{1}{\sqrt{5}} < \frac{1}{2}$.
+\end{document}
