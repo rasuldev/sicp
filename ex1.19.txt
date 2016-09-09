@@ -1,0 +1,18 @@
+T_{p,q}(a,b) = ((a+b)q+ap,bp+aq)
+T_{p,q}T_{p,q}(a,b) = T_{p,q}((a+b)q+ap,bp+aq)=
+(
+  ((a+b)q+ap+bp+aq)q+
+  ((a+b)q+ap)p,
+  (bp+aq)p+
+  ((a+b)q+ap)q
+)
+------
+1st arg:
+((a+b)q+ap+bp+aq)q+((a+b)q+ap)p=
+((a+b)(p+q)+aq)q+((a+b)q+ap)p=
+(a+b)(p+q)q+aqq +(a+b)pq+app=(a+b)(2pq+qq) + a(pp+qq)
+
+So T_{p,q}T_{p,q}=T_{pp+qq,2pq+qq}
+
+Let's check it for the 2nd arg:
+(bp+aq)p+((a+b)q+ap)q=b(pp+qq)+a(2pq+qq)

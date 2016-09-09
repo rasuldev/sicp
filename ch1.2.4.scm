@@ -4,8 +4,6 @@
       (* b (expt b (- n 1))))
 )
 
-(expt 2 10)
-
 (define (expt-i b n)
   (define (iter acc n)
     (if (= n 0)
@@ -15,12 +13,10 @@
   (iter 1 n)
 )
 
-(expt-i 2 4)
-
-
-
-
-
-
-
+(define (fast-expt b n)
+  (cond ((= n 0) 1)
+	((even? n) (fast-expt (square b) (/ n 2)))
+	(else (* b (fast-expt b (- n 1))))   
+   )
+)
 
