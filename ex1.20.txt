@@ -1,0 +1,30 @@
+(define (gcd a b)
+	(if (= b 0) a
+		    (gcd b (remainder a b))
+	)
+)
+
+Normal order:
+(gcd 206 40)
+(gcd 40 
+     (remainder 206 40)) - 1 remainder calc for (= b 0)
+(gcd (remainder 206 40) (remainder 40 
+     (remainder 206 40))) - 2 remainder calc for (= b 0)
+(gcd (remainder 40 (remainder 206 40))
+     (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))) - 4
+(gcd (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))
+     (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40))))) - 7
+
+(remainder (remainder 206 40) (remainder 40 (remainder 206 40))) - 4
+
+1+2+4+7+4=18 remainder calculations
+--------
+
+Applicative order:
+(gcd 206 40) - 1 remainder inside 
+(gcd 40 6) - 1
+(gcd 6 4) - 1
+(gcd 4 2) - 1
+(gcd 2 0)
+
+4 remainder calculations
