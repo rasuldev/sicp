@@ -1,0 +1,73 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, dsfont}
+\usepackage{amscd}
+\usepackage[russian]{babel}
+%\usepackage{pscyr}
+\usepackage{cmap}
+
+\textwidth=16.5cm
+\hoffset=-2.5cm
+\textheight=25.5cm
+\voffset=-2.5cm
+
+
+\righthyphenmin=2
+\parindent=0mm
+\parskip=3mm
+
+\newcommand{\suml}{\sum\limits}
+\newcommand{\intl}{\int\limits}
+
+
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\DeclareMathOperator*{\essinf}{ess\,inf}
+
+%========Библиография=========
+\makeatletter
+\renewcommand{\@biblabel}[1]{#1.}
+\makeatother
+
+\bibliographystyle{utf8gost705u}
+%================
+
+
+\newtheorem{lemma}{Лемма}
+\newtheorem{theorem}{Теорема}
+\newtheorem*{remark}{Замечание}
+%\renewcommand{\theremark}{}
+\newtheorem{theoremrus}{Теорема}
+\newtheorem{lemmarus}{Лемма}
+\newtheorem{statementrus}{Утверждение}
+\newtheorem{remarkrus}{Замечание}
+
+\newcommand{\highphantom}{\vphantom{\dfrac{1}{1}}}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
+
+%\renewcommand{\thelemma}{\arabic{lemma}}
+%\renewcommand{\proofname}{Доказательство}
+\renewcommand{\arraystretch}{2}
+
+\begin{document}
+(define (expmod base exp m)\ldots:
+
+3rd condition. We can calc $b^{2n} \bmod m$ using $b^n \bmod m$. Indeed, let
+\begin{equation}\label{bn}
+b^n = mq + r.
+\end{equation}
+Note, that $r = b^n \bmod m$. If we square both parts of \eqref{bn}, we'll get:
+\begin{equation*}
+  b^{2n} = m^2q^2+2mqr + r^2.
+\end{equation*}
+It's clear that first two summands are divided by m, so remainder will depend only on $r^2$:
+\begin{equation*}
+    b^{2n} \bmod m = r^2 \bmod m = (b^n \bmod m)^2 \bmod m.
+\end{equation*}
+
+4th condition. Let $b^{n-1}=mq+r$. Then $b^n=bmq+rb$, and we have
+\begin{equation*}
+  b^n \bmod m = rb \bmod m = ((b^{n-1} \bmod m)b) \bmod m.
+\end{equation*}
+
+\end{document}
