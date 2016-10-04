@@ -1,0 +1,11 @@
+x -> f(x)
+f -> double(f) = double(x->f(x)) = x -> f(f(x))
+
+double(f->double(f)) = f -> double(double(f))
+double(f -> double(double(f))) = f -> double(double(double(double(f))))
+double(double(double( double(x -> inc(x)) ))) = 
+double(double(double( x -> inc(inc(x))    ))) =
+double(double(x -> inc(inc(inc(inc(x))))  )) =
+double(x -> inc(inc(inc(inc(inc(inc(inc(inc(x))))))))  ) =
+x -> inc(inc(inc(inc(inc(inc(inc(inc(inc(inc(inc(inc(inc(inc(inc(inc(x))))))))))))
+
