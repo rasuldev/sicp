@@ -1,0 +1,69 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, dsfont}
+\usepackage{amscd}
+\usepackage[russian]{babel}
+%\usepackage{pscyr}
+\usepackage{cmap}
+
+\textwidth=16.5cm
+\hoffset=-2.5cm
+\textheight=25.5cm
+\voffset=-2.5cm
+
+
+\righthyphenmin=2
+\parindent=0mm
+\parskip=3mm
+
+\newcommand{\suml}{\sum\limits}
+\newcommand{\intl}{\int\limits}
+
+
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\DeclareMathOperator*{\essinf}{ess\,inf}
+
+%========Библиография=========
+\makeatletter
+\renewcommand{\@biblabel}[1]{#1.}
+\makeatother
+
+\bibliographystyle{utf8gost705u}
+%================
+
+
+\newtheorem{lemma}{Лемма}
+\newtheorem{theorem}{Теорема}
+\newtheorem*{remark}{Замечание}
+%\renewcommand{\theremark}{}
+\newtheorem{theoremrus}{Теорема}
+\newtheorem{lemmarus}{Лемма}
+\newtheorem{statementrus}{Утверждение}
+\newtheorem{remarkrus}{Замечание}
+
+\newcommand{\highphantom}{\vphantom{\dfrac{1}{1}}}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
+
+%\renewcommand{\thelemma}{\arabic{lemma}}
+%\renewcommand{\proofname}{Доказательство}
+\renewcommand{\arraystretch}{2}
+
+\begin{document}
+$width/center = tolerance$ => $width = center * tolerance$
+
+Given two intervals $J_1=(c_1, t_1)$ and $J_2=(c_2, t_2)$, defined using their centers and tolerances, let's find their representation by lower and upper bounds.
+Due to $w = c  t$ we have
+\begin{align*}
+  w_1 = c_1  t1 \Rightarrow &(c_1, t_1) = (c_1 - c_1 t_1, c_1 + c_1t_1) = (c_1(1-t_1),c_1(1+t_1)),\\
+  &(c_2, t_2) = (c_2(1-t_2),c_2(1+t_2)).
+\end{align*}
+Under assuming that all numbers are positive the product of two intervals is equal to 
+\begin{equation*}
+J=J_1J_2 = \Bigl(
+c_1c_2(1-t_1)(1-t_2),
+c_1c_2(1+t_1)(1+t_2)
+\Bigr)=(x, y).
+\end{equation*}
+Center of this product is equal to $(x+y)/2=c_1c_2(1+t_1t_2)$ and width is $(x-y)/2=c_1c_2(t_1+t_2)$. So tolerance is $\frac{t_1+t_2}{1+t_1t_2}$.
+\end{document}
