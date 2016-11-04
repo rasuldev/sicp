@@ -1,0 +1,13 @@
+(fold-left op init (list a1 a2 a3))
+(fold-right op init (list a1 a2 a3))
+
+(a op b) op c = a op (b op c) - assoc
+(a op b) = (b op a) - comm
+
+foldr = a1 op (a2 op (a3 op init)) 
+foldl = ((init op a1) op a2) op a3=<comm>=
+((a1 op init) op a2) op a3=<assoc>=
+(a1 op (init op a2)) op a3=<assoc>=
+a1 op ((init op a2) op a3)=<comm>=
+a1 op ((a2 op init) op a3)=<assoc>=
+a1 op (a2 op (init op a3))=<comm>=foldr
