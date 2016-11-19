@@ -14,9 +14,9 @@
   (define (splitter painter n)
     (if (= n 0)
 	painter
-	(let ((smaller (splitter painter (- n 1)))
+	(let ((smaller (splitter painter (- n 1))))
 	  (bigOp painter
-		 (smallOp smaller smaller))
+		 (smallOp smaller smaller)
 	  )    
 	)
     )

@@ -1,0 +1,12 @@
+https://groups.csail.mit.edu/mac/ftpdir/scheme-7.4/doc-html/scheme_18.html
+https://www.gnu.org/software/mit-scheme/documentation/mit-scheme-ref/Graphics.html#Graphics
+http://stackoverflow.com/questions/13169897/draw-graphics-with-mit-scheme
+(let ((device (make-graphics-device (car (enumerate-graphics-types))))
+          (x-start 0)
+          (y-start 0)
+          (x-end 5)
+          (y-end 5))
+      (graphics-draw-line device x-start y-start x-end y-end)
+      (graphics-close device))
+
+(define device (make-graphics-device (car (enumerate-graphics-types))))
