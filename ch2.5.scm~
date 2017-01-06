@@ -111,7 +111,7 @@
 
   (define (make-term-list coeffs)
     (cond ((null? coeffs)( the-empty-termlist))
-	  (else (adjoin-term (make-term (- (length coeffs) 1) (car coeffs))
+	  (else (adjoin-term (make-term (length coeffs) (car coeffs))
 			     (make-term-list (cdr coeffs)))
 		
 	  )
@@ -168,6 +168,8 @@
     (empty-termlist? (term-list p))
   )
 
+  (put '=zero? '(polynomial) =zero-poly?)
+
 
   (define (negate-poly p)
     (define (negate-term term)
@@ -188,31 +190,26 @@
   )
 
 
-  (define (print-poly p)
+  (define (print p)
     (define (print-term term)
-      (print (coeff term))
-      (if (> (order term) 0)
-	  (begin
-	    (display (variable p))
-	    (display "^")
-	    (display (order term)))
-      )
+      (display (coeff term))
+      (display (variable p))
+      (display "^")
+      (display (order term))
     )
     
     (define (print-terms terms)
-      (print-term (first-term terms))
-      (let ((rest (rest-terms terms)))
-	(if (not (empty-termlist? rest))
+      (if (empty-termlist? terms)
+	  (if (=zero? p) 
+	      (display 0)
+	      (display ""))
 	  (begin
-	    (display "+")
-	    (print-terms (rest-terms terms)))	    
-	)
+	    (print-term (first-term terms))
+	    (print-terms (rest-terms terms)))
       )
     )
-    (if (=zero-poly? p)
-	(display 0)
-	(print-terms (term-list p))
-    )
+    newline
+    (print-terms (terms (term-list p)))
   )
 
 
@@ -226,8 +223,7 @@
   (put 'make 'polynomial
        (lambda (var terms) (tag (make-poly var terms))))
   (put 'make 'term-list make-term-list)
-  (put 'print '(polynomial) print-poly)
-  (put '=zero? '(polynomial) =zero-poly?)
+  (put 'adjoin 'term adjoin-term)
   
   'done
 )
@@ -240,36 +236,23 @@
 )
 
 (define (make-polynom var terms)
-  ((get 'make 'polynomial) var terms)
+  ((get 'make 'polynom) var terms)
 )
 
-(define (make-polynom2 var coeffs)
-  (make-polynom var 
-		(make-terms coeffs))
+(define (adjoin term list)
+  ((get 'adjoin 'term) term list)
 )
 
 (define terms (make-terms (list 1 2 3)))
 
 terms
 
-(define p1 (make-polynom 'x 
-			 '((2 2)(0 3))
-	  )
-)
-
-(define p2 (make-polynom 'x 
-			 '((3 1)(2 2)(0 2))
-	  )
-)
+(define p (make-polynom 'x terms))
 
 
-(print p1)
-;(display "+")
-(print p2)
-;(display "=")
-(print (add p1 p2))
+ 
 
-(print (make-polynom2 'y (list 1 2 3)))
+
 
 
 
