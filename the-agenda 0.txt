@@ -1,0 +1,27 @@
+the-agenda 0
+---------
+1) 5 or-action-procedure (input-1 or input-2)  -> set-signal on d
+2) 3 and-action-procedure (input-1 or input-2)
+3) 3 and-action-procedure (input-1 or input-2)
+4) 5 or-action-procedure (input-1 or input-2)
+
+========
+input-1 0 -> 1
+-------
+or-action-procedure
+and-action-procedure
+
+
+(half-adder input-1 input-2 sum carry)
+	(or-gate)
+		(add-action! input-1 or-action-procedure)
+			(accept-action-procedure! or-action-procedure) 
+				(after-delay) => 1)
+	(and-gate)
+		...
+				(after-delay) => 2)
+
+(set-signal! input-1 1)
+	(and-action-procedure)
+		(after-delay) => 3) 
+	(or-action-procedure)
