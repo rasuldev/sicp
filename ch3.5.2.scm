@@ -50,6 +50,8 @@
 ; output: 0 1 2 3 4 5
 (cons-stream 0 (stream-map show (stream-enumerate-interval 1 10))) ; = x
 
+
+
 (stream-ref x 5)
 (stream-ref (cons-stream 1 
                          (stream-map show (stream-enumerate-interval 2 10))) 4)
@@ -85,5 +87,13 @@ seq=(cons-stream 1 (cons-stream 3 (cons-stream 6 (stream-map accum (stream-enume
 z=(stream-filter mul-of-5 (cons-stream 10 (stream-map accum (stream-enumerate-interval 5 10)))
 z=(cons-stream 10 (stream-filter mul-of-5 (stream-map accum (stream-enumerate-interval 5 10))))
 seq=(cons-stream 1 (cons-stream 3 (cons-stream 6 (cons-stream 10 (stream-map accum (stream-enumerate-interval 5 10))))
-                 
+;===============
+(define double (cons-stream 1 (scale-stream double 2)))
+(stream-cdr double)
+(scale-stream double 2)
+(stream-map mul-by-2 (stream-cdr double))
+
+double=(cons-stream 1 (cons-stream 2 (stream-map mul-by-2 (stream-cdr double))))
+
+
                  
