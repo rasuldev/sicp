@@ -37,7 +37,7 @@
       s2
       (cons-stream (stream-car s1)
 		   (interleave s2 (stream-cdr s1)))))
-;(display-stream (pairs integers integers) 30)
+(display-stream (pairs integers integers) 30)
 
 (define (zip s t)
   (cons-stream (list (stream-car s) (stream-car t))
@@ -98,49 +98,12 @@
 ;(stream-head (pairs-reasoner integers integers) 10)
 
 ;==== ex 3.69 ====
-(define (tripples-ints)
-  (stream-append-map (lambda (p) 
-		       (stream-map (lambda (i) (cons i p))
-			    (take integers (car p)))
-		       )
-		     (pairs integers integers))
-)
-
-
-;(stream-head (tripples-ints) 20)
-
 (define (tripples s t u)
-  (interleave
-   (stream-map (lambda (p) (cons (stream-car s) p)) 
-			  (pairs t u))
-   (tripples (stream-cdr s) (stream-cdr t) (stream-cdr u)))
+  (stream-map (lambda (p) 
+		(stream-map (lambda (i)
+			      (cons i p))
+			    (stream-head s (car p)))) 
+	      (pairs t u))
 )
-
-(stream-ref (tripples integers integers integers) 10)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
